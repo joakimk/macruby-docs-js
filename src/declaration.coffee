@@ -1,13 +1,13 @@
 class Declaration
   constructor: (@declaration) ->
 
-  return_type: ->
+  returnType: ->
     pattern = ///
       . \((.+?)\) # Capture TYPE from '- (TYPE)method'
     ///
     @declaration.match(pattern)[1]
 
-  method_name: ->
+  methodName: ->
     pattern = ///
       .+?\)(.+?): # Capture METHOD from '- (type)METHOD:'
     ///
