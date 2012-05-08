@@ -9,7 +9,10 @@ Todo:
 - Declaration parser.
 - Document scanner.
 - Render MacRuby docs and insert into page.
-  - Notes: $($(".declaration", window.parent.frames[0].document)[0]).append("<br/><br/>MacRuby:")
+  - Notes:
+
+    $($(".declaration", window.parent.frames[0].document)[0]).append("<br/><br/>MacRuby:")
+
 - Map types to ruby types. BOOL becomes Boolean, NSString is String, etc.
 - Convert to selector shortcuts where possible: http://www.rubymotion.com/developer-center/guides/runtime/#_selector_shortcuts (isFoo becomes foo?)
 - Test in Firefox and Chrome.
