@@ -13,3 +13,8 @@ class Declaration
     ///
     @declaration.match(pattern)[1]
 
+  isInstanceMethod: ->
+    pattern = ///
+      -.+ # Does it start with "-" ?
+    ///
+    !!@declaration.match(pattern)

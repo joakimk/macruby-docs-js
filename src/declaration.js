@@ -13,5 +13,10 @@ Declaration = (function() {
     pattern = /.+?\)(.+?):/;
     return this.declaration.match(pattern)[1];
   };
+  Declaration.prototype.isInstanceMethod = function() {
+    var pattern;
+    pattern = /-.+/;
+    return !!this.declaration.match(pattern);
+  };
   return Declaration;
 })();
