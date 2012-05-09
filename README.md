@@ -8,6 +8,7 @@ https://gist.github.com/2630440
 Todo:
 - *[DONE]* Declaration parser.
 - Document scanner.
+  - todo: setup proper dev env.
 - Render MacRuby docs and insert into page.
   - Notes:
 
