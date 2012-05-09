@@ -3,18 +3,47 @@ class Declaration
 
   returnType: ->
     pattern = ///
-      . \((.+?)\) # Capture TYPE from '- (TYPE)method'
+      . \((.+?)\)
     ///
     @declaration.match(pattern)[1]
 
   methodName: ->
     pattern = ///
-      .+?\)(.+?): # Capture METHOD from '- (type)METHOD:'
+      .+?\)(.+?):
     ///
     @declaration.match(pattern)[1]
 
   isInstanceMethod: ->
     pattern = ///
-      -.+ # Does it start with "-" ?
+      -.+
     ///
     !!@declaration.match(pattern)
+
+  parameters: ->
+    pattern = ///
+      .+?:(.+)
+    ///
+
+    # Split between parameters (not within, like with "NSString *")
+    parameters = @declaration.match(pattern)[1].replace(new RegExp(" \\*", "g"), "#*").split(' ')
+    parameters = (parameter.replace('#*', ' *') for parameter in parameters)
+
+    @mapParameter(parameter) for parameter in parameters
+
+  mapParameter: (parameter) ->
+    # Handles "(type)value"
+    if parameter[0] == "("
+      
+      pattern = ///
+        \((.+?)\)(.+)
+      ///
+      parameter.match(pattern)[1..2].reverse()
+    else
+      # Handles "key:(type)value"
+      pattern = ///
+        \((.+?)\)(.+)
+      ///
+      [ key, arg ] = parameter.split(':')
+      [ value, type ] = arg.match(pattern)[1..2].reverse()
+      [ "#{key}: #{value}", type ]
+
