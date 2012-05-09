@@ -6,7 +6,7 @@ Prototype made in ruby can be found at:
 https://gist.github.com/2630440
 
 Todo:
-- Declaration parser.
+- *[DONE]* Declaration parser.
 - Document scanner.
 - Render MacRuby docs and insert into page.
   - Notes:
