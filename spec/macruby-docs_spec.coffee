@@ -27,3 +27,19 @@ describe "Declaration", ->
     expect(parameters[2]).toEqual([ "options: opts", "NSLinguisticTaggerOptions" ])
     expect(parameters[3]).toEqual([ "orthography: orthography", "NSOrthography *" ])
     expect(parameters[4]).toEqual([ "tokenRanges: tokenRanges", "NSArray **" ])
+
+#  it "can handle multiple spaces within a type", ->
+#    dec = new Declaration("- (id)initWithCString:(const char *)nullTerminatedCString encoding:(NSStringEncoding)encoding")
+#    expect(dec.parameters()).toEqual([ [ "nullTerminatedCString", "const char *" ], [ "encoding: encoding", "NSStringEncoding" ] ])
+
+describe "DocRenderer", ->
+  it "can render docs", ->
+    renderer = new DocRenderer("NSString", "- (NSData *)dataUsingEncoding:(NSStringEncoding)encoding")
+    html = renderer.render()
+    expect(html.indexOf('dataUsingEncoding')).toNotEqual(-1)
+
+  it "handles errors in parsing", ->
+    renderer = new DocRenderer("NSString", "BAD DATA")
+    html = renderer.render()
+    expect(html).toEqual('Could not parse or render, check issues at <a href="https://github.com/joakimk/macruby-docs-js/issues">https://github.com/joakimk/macruby-docs-js/issues</a>.')
+

@@ -33,3 +33,17 @@ describe("Declaration", function() {
     return expect(parameters[4]).toEqual(["tokenRanges: tokenRanges", "NSArray **"]);
   });
 });
+describe("DocRenderer", function() {
+  it("can render docs", function() {
+    var html, renderer;
+    renderer = new DocRenderer("NSString", "- (NSData *)dataUsingEncoding:(NSStringEncoding)encoding");
+    html = renderer.render();
+    return expect(html.indexOf('dataUsingEncoding')).toNotEqual(-1);
+  });
+  return it("handles errors in parsing", function() {
+    var html, renderer;
+    renderer = new DocRenderer("NSString", "BAD DATA");
+    html = renderer.render();
+    return expect(html).toEqual('Could not parse or render, check issues at <a href="https://github.com/joakimk/macruby-docs-js/issues">https://github.com/joakimk/macruby-docs-js/issues</a>.');
+  });
+});

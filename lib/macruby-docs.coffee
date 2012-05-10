@@ -48,10 +48,35 @@ class Declaration
       [ "#{key}: #{value}", type ]
 
 class DocRenderer
-  constructor: (@declaration) ->
+  constructor: (@className, @declarationText) ->
 
   render: ->
-    "text"
+    try
+      @declaration = new Declaration(@declarationText)
+      # Note: Setting color to white before the table because something adds ',,,' before it.
+      parameters = @declaration.parameters()
+      length = parameters.length
+      i = 0
+      str = "<div><span>#{@className}#{@separator()}#{@declaration.methodName()}</span>"
+      str += "<span style='color: #fff'><table style='color: #000; margin-left: 20px'>"
+      str += ("<tr><td>#{param[0]}#{@addComma((i+=1), length)}</td><td style='color: gray; padding-left: 10px;'># (#{param[1]})</td></tr>" for param in parameters).join()
+      str += "</table></span></div>"
+      console.log(str)
+      str
+    catch err
+      'Could not parse or render, check issues at <a href="https://github.com/joakimk/macruby-docs-js/issues">https://github.com/joakimk/macruby-docs-js/issues</a>.'
+
+  separator: ->
+    if @declaration.isInstanceMethod()
+      "#"
+    else
+      "."
+
+  addComma: (i, length) ->
+    if length != i
+      ','
+    else
+      ''
 
 if !window.in_tests
   addJQuery = (callback) ->
@@ -74,7 +99,7 @@ if !window.in_tests
         jQuery.each jQuery(".declaration", window.parent.frames[0].document), (i, element) ->
           content = element.innerHTML
           if content.indexOf("MacRuby") == -1
-            element.innerHTML = element.innerHTML + "<br/><br/><h5>MacRuby</h5>" + new DocRenderer(content).render()
+            element.innerHTML = element.innerHTML + "<h5 style='margin-top: 20px'>MacRuby</h5>" + new DocRenderer(className, content).render()
       catch err
         console.log(err)
 
