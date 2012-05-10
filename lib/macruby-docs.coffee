@@ -103,5 +103,5 @@ if !window.in_tests
       catch err
         console.log(err)
 
-    setInterval(check, 3000)
+    setInterval(check, 1000)
   addJQuery(main)
