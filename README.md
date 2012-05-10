@@ -9,3 +9,4 @@ Todo:
 - Handle more declaration types.
 - Map types to ruby types. BOOL becomes Boolean, NSString is String, etc.
 - Convert to selector shortcuts where possible: http://www.rubymotion.com/developer-center/guides/runtime/#_selector_shortcuts (isFoo becomes foo?)
+- Development instructions.
