@@ -1,20 +1,8 @@
-Work in progress.
+[macruby-docs.user.js](https://github.com/joakimk/macruby-docs-js/raw/master/macruby-docs.user.js) - Userscript that adds MacRuby/RubyMotion syntax to Apple's Objective-C/Cocoa docs.
 
-Will be a user script to make Apple's Objective-C docs more readable by providing a translation to MacRuby syntax. For use when coding MacRuby or RubyMotion.
-
-Prototype made in ruby can be found at:
-https://gist.github.com/2630440
+Works for some cases. Still a work in progress. It fetches the latest stable version when used so you can install now and get more features as they are added.
 
 Todo:
-- *[DONE]* Declaration parser.
-- Document scanner.
-  - todo: setup proper dev env.
-- Render MacRuby docs and insert into page.
-  - Notes:
-
-    $($(".declaration", window.parent.frames[0].document)[0]).append("<br/><br/>MacRuby:")
-
 - Map types to ruby types. BOOL becomes Boolean, NSString is String, etc.
 - Convert to selector shortcuts where possible: http://www.rubymotion.com/developer-center/guides/runtime/#_selector_shortcuts (isFoo becomes foo?)
-- Test in Firefox and Chrome.
 - Release.
