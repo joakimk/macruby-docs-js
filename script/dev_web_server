@@ -1,0 +1,2 @@
+#!/bin/sh
+bundle exec ruby tools/dev_web_server.rb

@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name          MacRuby Docs JS - Adds MacRuby/RubyMotion syntax to Apple's Objective-C/Cocoa docs.
+// @name          MacRuby Docs JS - DEV version.
 // @namespace     http://twitter.com/joakimk
-// @description   Adds MacRuby/RubyMotion syntax to Apple's Objective-C/Cocoa docs.
+// @description   
 // @include       http://developer.apple.com/library/mac/*
 // @include       https://developer.apple.com/library/mac/*
 // @version       1.0
@@ -18,7 +18,7 @@
   };
 
   var load_latest = function() {
-    require("https://raw.github.com/joakimk/macruby-docs-js/master/lib/macruby-docs.stable.js");
+    require("http://localhost:55444/dev.js");
   };
   
   load_latest();

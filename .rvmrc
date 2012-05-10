@@ -1,0 +1,1 @@
+rvm $(rvm list|grep ruby-1.9.3-p0-patched > /dev/null && echo 'ruby-1.9.3-p0-patched' || echo 'ruby-1.9')@macruby-docs-js --create

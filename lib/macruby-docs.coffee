@@ -47,3 +47,36 @@ class Declaration
       [ value, type ] = arg.match(pattern)[1..2].reverse()
       [ "#{key}: #{value}", type ]
 
+class DocRenderer
+  constructor: (@declaration) ->
+
+  render: ->
+    "text"
+
+if !window.in_tests
+  addJQuery = (callback) ->
+    script = document.createElement("script")
+    script.setAttribute("src", "http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js")
+
+    addScriptToPage = ->
+      script = document.createElement("script")
+      script.textContent = "(" + callback.toString() + ")();"
+      document.body.appendChild(script)
+
+    script.addEventListener 'load', addScriptToPage, false
+    document.body.appendChild(script)
+
+  main = ->
+    $.noConflict()
+    check = ->
+      try
+        className = jQuery("#pageTitle", window.parent.frames[0].document).html().split(" ")[0]
+        jQuery.each jQuery(".declaration", window.parent.frames[0].document), (i, element) ->
+          content = element.innerHTML
+          if content.indexOf("MacRuby") == -1
+            element.innerHTML = element.innerHTML + "<br/><br/><h5>MacRuby</h5>" + new DocRenderer(content).render()
+      catch err
+        console.log(err)
+
+    setInterval(check, 3000)
+  addJQuery(main)

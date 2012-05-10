@@ -4,16 +4,19 @@
 <head>
   <title>Jasmine Spec Runner</title>
 
-  <link rel="shortcut icon" type="image/png" href="lib/jasmine-1.2.0.rc3/jasmine_favicon.png">
-  <link rel="stylesheet" type="text/css" href="lib/jasmine-1.2.0.rc3/jasmine.css">
-  <script type="text/javascript" src="lib/jasmine-1.2.0.rc3/jasmine.js"></script>
-  <script type="text/javascript" src="lib/jasmine-1.2.0.rc3/jasmine-html.js"></script>
+  <link rel="shortcut icon" type="image/png" href="tools/jasmine-1.2.0.rc3/jasmine_favicon.png">
+  <link rel="stylesheet" type="text/css" href="tools/jasmine-1.2.0.rc3/jasmine.css">
+  <script type="text/javascript" src="tools/jasmine-1.2.0.rc3/jasmine.js"></script>
+  <script type="text/javascript" src="tools/jasmine-1.2.0.rc3/jasmine-html.js"></script>
 
   <!-- include source files here... -->
-  <script type="text/javascript" src="src/declaration.js"></script>
+  <script type="text/javascript">
+    window.in_tests = true;
+  </script>
+  <script type="text/javascript" src="lib/macruby-docs.js"></script>
 
   <!-- include spec files here... -->
-  <script type="text/javascript" src="spec/declaration_spec.js"></script>
+  <script type="text/javascript" src="spec/macruby-docs.js"></script>
 
   <script type="text/javascript">
     (function() {
@@ -40,9 +43,6 @@
       function execJasmine() {
         jasmineEnv.execute();
       }
-
-       setTimeout("window.location.reload()", 500)
-
     })();
   </script>
 
