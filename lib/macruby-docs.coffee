@@ -61,7 +61,6 @@ class DocRenderer
       str += "<span style='color: #fff'><table style='color: #000; margin-left: 20px'>"
       str += ("<tr><td>#{param[0]}#{@addComma((i+=1), length)}</td><td style='color: gray; padding-left: 10px;'># (#{param[1]})</td></tr>" for param in parameters).join()
       str += "</table></span></div>"
-      console.log(str)
       str
     catch err
       'Could not parse or render, check issues at <a href="https://github.com/joakimk/macruby-docs-js/issues">https://github.com/joakimk/macruby-docs-js/issues</a>.'
@@ -100,6 +99,9 @@ if !window.in_tests
           content = element.innerHTML
           if content.indexOf("MacRuby") == -1
             element.innerHTML = element.innerHTML + "<h5 style='margin-top: 20px'>MacRuby</h5>" + new DocRenderer(className, content).render()
+          else
+            # If a page already has the annotations, don't check more than once. (the pages are loaded by ajax).
+            return
       catch err
         console.log(err)
 
