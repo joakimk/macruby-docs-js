@@ -5,7 +5,7 @@ It downloads the latest stable version when used so you can install now and get 
 Still a work in progress.
 
 Todo:
+- Example of how it alters the page, link to apple docs, etc.
 - Handle more declaration types.
 - Map types to ruby types. BOOL becomes Boolean, NSString is String, etc.
 - Convert to selector shortcuts where possible: http://www.rubymotion.com/developer-center/guides/runtime/#_selector_shortcuts (isFoo becomes foo?)
-- Release.
