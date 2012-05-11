@@ -95,13 +95,10 @@ if !window.in_tests
     check = ->
       try
         className = jQuery("#pageTitle", window.parent.frames[0].document).html().split(" ")[0]
+        return if jQuery(".declaration .macruby", window.parent.frames[0].document).length > 0
         jQuery.each jQuery(".declaration", window.parent.frames[0].document), (i, element) ->
           content = element.innerHTML
-          if content.indexOf("MacRuby") == -1
-            element.innerHTML = element.innerHTML + "<h5 style='margin-top: 20px'>MacRuby</h5>" + new DocRenderer(className, content).render()
-          else
-            # If a page already has the annotations, don't check more than once. (the pages are loaded by ajax).
-            return
+          element.innerHTML = element.innerHTML + "<h5 class='macruby' style='margin-top: 20px'>MacRuby</h5>" + new DocRenderer(className, content).render()
       catch err
         console.log(err)
 
