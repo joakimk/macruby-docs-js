@@ -1,12 +1,16 @@
 [macruby-docs.user.js](https://github.com/joakimk/macruby-docs-js/raw/master/macruby-docs.user.js) - A userscript that adds MacRuby/RubyMotion syntax to Apple's Objective-C/Cocoa docs.
 
-It downloads the latest stable version when used so you can install now and get more features as they are added.
+Development instructions
+---
 
-Still a work in progress.
+This project uses ruby to get a web server setup for development. You also need to make sure you have node and coffee-script installed.
 
-Todo:
-- Example of how it alters the page, link to apple docs, etc.
-- Handle more declaration types.
-- Map types to ruby types. BOOL becomes Boolean, NSString is String, etc.
-- Convert to selector shortcuts where possible: http://www.rubymotion.com/developer-center/guides/runtime/#_selector_shortcuts (isFoo becomes foo?)
-- Development instructions.
+    git clone git@github.com:joakimk/macruby-docs-js.git
+    cd macruby-docs-js
+    # [sudo] gem install bundler
+    bundle
+    rake
+
+Open run_specs.html to run the specs.
+
+Install the extension using tools/macruby-docs-dev.user.js to use the local development version.
