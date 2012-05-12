@@ -2,8 +2,8 @@
 // @name          MacRuby Docs JS - Adds MacRuby/RubyMotion syntax to Apple's Objective-C/Cocoa docs.
 // @namespace     http://twitter.com/joakimk
 // @description   Adds MacRuby/RubyMotion syntax to Apple's Objective-C/Cocoa docs.
-// @include       http://developer.apple.com/library/mac/*
-// @include       https://developer.apple.com/library/mac/*
+// @include       http://developer.apple.com/library/*
+// @include       https://developer.apple.com/library/*
 // @version       1.0
 // ==/UserScript==
 

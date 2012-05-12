@@ -2,8 +2,8 @@
 // @name          MacRuby Docs JS - DEV version.
 // @namespace     http://twitter.com/joakimk
 // @description   
-// @include       http://developer.apple.com/library/mac/*
-// @include       https://developer.apple.com/library/mac/*
+// @include       http://developer.apple.com/library/*
+// @include       https://developer.apple.com/library/*
 // @version       1.0
 // ==/UserScript==
 
