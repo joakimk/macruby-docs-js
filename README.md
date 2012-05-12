@@ -1,6 +1,6 @@
 [macruby-docs.user.js](https://github.com/joakimk/macruby-docs-js/raw/master/macruby-docs.user.js) - A userscript that adds MacRuby/RubyMotion syntax to Apple's Objective-C/Cocoa docs.
 
-After [installing](https://github.com/joakimk/macruby-docs-js/raw/master/macruby-docs.user.js) and visiting apple docs (like [NSString](https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/Reference/NSString.html)), you should be able to see "MacRuby" sections like this one within the documenation:
+After [installing](https://github.com/joakimk/macruby-docs-js/raw/master/macruby-docs.user.js) and visiting apple docs (like [NSString](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/Reference/NSString.html#//apple_ref/occ/instm/NSString/compare:options:range:)), you should be able to see "MacRuby" sections like this one within the documenation:
 
 ![Example](https://github.com/joakimk/macruby-docs-js/raw/master/example.png)
 
