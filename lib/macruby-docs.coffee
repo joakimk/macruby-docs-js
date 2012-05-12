@@ -103,7 +103,8 @@ if !window.in_tests
       try
         className = jQuery("#pageTitle", window.parent.frames[0].document).html().split(" ")[0]
         return if jQuery(".declaration .macruby", window.parent.frames[0].document).length > 0
-        jQuery.each jQuery(".api .declaration", window.parent.frames[0].document), (i, element) ->
+        selector = ".api.instanceMethod .declaration, .api.classMethod .declaration"
+        jQuery.each jQuery(selector, window.parent.frames[0].document), (i, element) ->
           content = element.textContent
           element.innerHTML = element.innerHTML + "<h5 class='macruby' style='margin-top: 20px'>MacRuby</h5>" + new DocRenderer(className, content).render()
       catch err
