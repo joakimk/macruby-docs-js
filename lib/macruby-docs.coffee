@@ -32,8 +32,7 @@ class Declaration
       .+?\b)          # Matches the parameter name upto word boundary (space between parameters or end of line)
     ///g
 
-    parameters = @declaration.match(pattern)[1..-1]
-    @mapParameter(parameter) for parameter in parameters
+    @declaration.match(pattern)[1..-1].map(@mapParameter)
 
   hasParameters: ->
     @declaration.indexOf(":") != -1
