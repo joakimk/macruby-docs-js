@@ -8,9 +8,11 @@ class Declaration
     @declaration.match(pattern)[1]
 
   methodName: ->
-    pattern = ///
-      .+?\)(.+?):
-    ///
+    if @hasParameters()
+      pattern = /.+?\)(.+?):/
+    else
+      pattern = /.+?\)(.+)/
+
     @declaration.match(pattern)[1]
 
   isInstanceMethod: ->
@@ -20,15 +22,21 @@ class Declaration
     !!@declaration.match(pattern)
 
   parameters: ->
+    return [] unless @hasParameters()
+
+    # Matches:
+    # "keyName:(type)parameter" or "(type)parameter"
     pattern = ///
-      .+?:(.+)
-    ///
+      (([a-zA-Z]+?:)? # Optionally matches "keyName:" before type
+      \(.+?\)         # Matches "(some type value)"
+      .+?\b)          # Matches the parameter name upto word boundary (space between parameters or end of line)
+    ///g
 
-    # Split between parameters (not within, like with "NSString *")
-    parameters = @declaration.match(pattern)[1].replace(new RegExp(" \\*", "g"), "#*").split(' ')
-    parameters = (parameter.replace('#*', ' *') for parameter in parameters)
-
+    parameters = @declaration.match(pattern)[1..-1]
     @mapParameter(parameter) for parameter in parameters
+
+  hasParameters: ->
+    @declaration.indexOf(":") != -1
 
   mapParameter: (parameter) ->
     # Handles "(type)value"
@@ -60,7 +68,7 @@ class DocRenderer
       str = "<div><span>#{@className}#{@separator()}#{@declaration.methodName()}</span>"
       str += "<span style='color: #fff'><table style='color: #000; margin-left: 20px'>"
       str += ("<tr><td>#{param[0]}#{@addComma((i+=1), length)}</td><td style='color: gray; padding-left: 10px;'># (#{param[1]})</td></tr>" for param in parameters).join()
-      str += "</table></span></div>"
+      str += "</table></span><div style='margin-top: 10px; color: gray;'>Return type: (#{@declaration.returnType()})</div> </div>"
       str
     catch err
       'Could not parse or render, check issues at <a href="https://github.com/joakimk/macruby-docs-js/issues">https://github.com/joakimk/macruby-docs-js/issues</a>.'
@@ -96,10 +104,11 @@ if !window.in_tests
       try
         className = jQuery("#pageTitle", window.parent.frames[0].document).html().split(" ")[0]
         return if jQuery(".declaration .macruby", window.parent.frames[0].document).length > 0
-        jQuery.each jQuery(".declaration", window.parent.frames[0].document), (i, element) ->
-          content = element.innerHTML
+        jQuery.each jQuery(".api .declaration", window.parent.frames[0].document), (i, element) ->
+          content = element.textContent
           element.innerHTML = element.innerHTML + "<h5 class='macruby' style='margin-top: 20px'>MacRuby</h5>" + new DocRenderer(className, content).render()
       catch err
+        console.log("macruby-docs.user.js error:")
         console.log(err)
 
     setInterval(check, 1000)

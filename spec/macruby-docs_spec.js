@@ -21,7 +21,7 @@ describe("Declaration", function() {
     dec = new Declaration("- (NSData *)dataUsingEncoding:(NSStringEncoding)encoding allowLossyConversion:(BOOL)flag");
     return expect(dec.parameters()).toEqual([["encoding", "NSStringEncoding"], ["allowLossyConversion: flag", "BOOL"]]);
   });
-  return it("can parse more complex parameters", function() {
+  it("can parse more complex parameters", function() {
     var dec, parameters;
     dec = new Declaration("- (NSArray *)linguisticTagsInRange:(NSRange)range scheme:(NSString *)tagScheme options:(NSLinguisticTaggerOptions)opts orthography:(NSOrthography *)orthography tokenRanges:(NSArray **)tokenRanges");
     parameters = dec.parameters();
@@ -31,6 +31,18 @@ describe("Declaration", function() {
     expect(parameters[2]).toEqual(["options: opts", "NSLinguisticTaggerOptions"]);
     expect(parameters[3]).toEqual(["orthography: orthography", "NSOrthography *"]);
     return expect(parameters[4]).toEqual(["tokenRanges: tokenRanges", "NSArray **"]);
+  });
+  it("can handle multiple spaces within a type", function() {
+    var dec;
+    dec = new Declaration("- (id)initWithCString:(const char *)nullTerminatedCString encoding:(NSStringEncoding)encoding");
+    return expect(dec.parameters()).toEqual([["nullTerminatedCString", "const char *"], ["encoding: encoding", "NSStringEncoding"]]);
+  });
+  return it("can parse methods without parameters", function() {
+    var dec;
+    dec = new Declaration("+ (id)string");
+    expect(dec.parameters()).toEqual([]);
+    expect(dec.methodName()).toEqual("string");
+    return expect(dec.returnType()).toEqual("id");
   });
 });
 describe("DocRenderer", function() {

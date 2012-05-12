@@ -10,8 +10,14 @@ task :spec do
   end
 end
 
-task :release do
+task :release_stable do
   cmd = "cp lib/macruby-docs.js lib/macruby-docs.stable.js"
+  puts "Running: #{cmd}"
+  system(cmd)
+end
+
+task :release_edge do
+  cmd = "cp lib/macruby-docs.js lib/macruby-docs.edge.js"
   puts "Running: #{cmd}"
   system(cmd)
 end

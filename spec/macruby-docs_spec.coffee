@@ -28,9 +28,15 @@ describe "Declaration", ->
     expect(parameters[3]).toEqual([ "orthography: orthography", "NSOrthography *" ])
     expect(parameters[4]).toEqual([ "tokenRanges: tokenRanges", "NSArray **" ])
 
-#  it "can handle multiple spaces within a type", ->
-#    dec = new Declaration("- (id)initWithCString:(const char *)nullTerminatedCString encoding:(NSStringEncoding)encoding")
-#    expect(dec.parameters()).toEqual([ [ "nullTerminatedCString", "const char *" ], [ "encoding: encoding", "NSStringEncoding" ] ])
+  it "can handle multiple spaces within a type", ->
+    dec = new Declaration("- (id)initWithCString:(const char *)nullTerminatedCString encoding:(NSStringEncoding)encoding")
+    expect(dec.parameters()).toEqual([ [ "nullTerminatedCString", "const char *" ], [ "encoding: encoding", "NSStringEncoding" ] ])
+
+  it "can parse methods without parameters", ->
+    dec = new Declaration("+ (id)string")
+    expect(dec.parameters()).toEqual([])
+    expect(dec.methodName()).toEqual("string")
+    expect(dec.returnType()).toEqual("id")
 
 describe "DocRenderer", ->
   it "can render docs", ->
