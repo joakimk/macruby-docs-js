@@ -88,7 +88,7 @@ class DocRenderer
 if !window.in_tests
   addJQuery = (callback) ->
     script = document.createElement("script")
-    script.setAttribute("src", "http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js")
+    script.setAttribute("src", "https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js")
 
     addScriptToPage = ->
       script = document.createElement("script")
