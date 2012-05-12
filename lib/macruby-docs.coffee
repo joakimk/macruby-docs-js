@@ -60,14 +60,14 @@ class DocRenderer
   render: ->
     try
       @declaration = new Declaration(@declarationText)
-      # Note: Setting color to white before the table because something adds ',,,' before it.
       parameters = @declaration.parameters()
       length = parameters.length
       i = 0
       str = "<div><span>#{@className}#{@separator()}#{@declaration.methodName()}</span>"
-      str += "<span style='color: #fff'><table style='color: #000; margin-left: 20px'>"
-      str += ("<tr><td>#{param[0]}#{@addComma((i+=1), length)}</td><td style='color: gray; padding-left: 10px;'># (#{param[1]})</td></tr>" for param in parameters).join()
-      str += "</table></span><div style='margin-top: 10px; color: gray;'>Return type: (#{@declaration.returnType()})</div> </div>"
+      str += "<table style='margin-left: 20px'>"
+      str += ("<tr><td>#{param[0]}#{@addComma((i+=1), length)}</td><td style='color: gray; padding-left: 10px;'># (#{param[1]})</td></tr>" for param in parameters).join("\n")
+      str += "</table><div style='margin-top: 10px; color: gray;'>Return type: (#{@declaration.returnType()})</div> </div>"
+      console.log(str)
       str
     catch err
       'Could not parse or render, check issues at <a href="https://github.com/joakimk/macruby-docs-js/issues">https://github.com/joakimk/macruby-docs-js/issues</a>.'
