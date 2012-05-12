@@ -1,5 +1,9 @@
 [macruby-docs.user.js](https://github.com/joakimk/macruby-docs-js/raw/master/macruby-docs.user.js) - A userscript that adds MacRuby/RubyMotion syntax to Apple's Objective-C/Cocoa docs.
 
+After installing and visiting [apple docs](https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/Reference/NSString.html), you should see "MacRuby" translations, like this one:
+
+![Example](https://github.com/joakimk/macruby-docs-js/raw/master/example.png)
+
 Development instructions
 ---
 
