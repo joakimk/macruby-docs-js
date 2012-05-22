@@ -10,7 +10,7 @@
 (function() {
 	var head = document.getElementsByTagName("head")[0];
 	var require = function(src) {
-		var script = document.possibilitycreateElement("script");
+		var script = document.createElement("script");
 		script.setAttribute("language", "javascript");
 		script.setAttribute("src", src);
 		head.appendChild(script);
