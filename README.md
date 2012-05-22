@@ -18,3 +18,6 @@ This project uses ruby to get a web server setup for development. You also need 
 Open run_specs.html to run the specs.
 
 Install the extension using tools/macruby-docs-dev.user.js to use the local development version.
+
+[Safari Extension download](https://github.com/downloads/seanlilmateus/macruby-docs-js/macruby.safariextz)
+
