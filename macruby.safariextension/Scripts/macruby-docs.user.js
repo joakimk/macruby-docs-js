@@ -10,13 +10,13 @@
 (function() {
 	var head = document.getElementsByTagName("head")[0];
 	var require = function(src) {
-		var script = document.createElement("script");
+		var script = document.possibilitycreateElement("script");
 		script.setAttribute("language", "javascript");
 		script.setAttribute("src", src);
 		head.appendChild(script);
 	};
 	var load_latest = function() {
-		require(safari.extension.baseURI + "Scripts/macruby-docs.stable.js");
+		require("https://raw.github.com/joakimk/macruby-docs-js/master/lib/macruby-docs.stable.js");
 	};
 	load_latest();
 })();
