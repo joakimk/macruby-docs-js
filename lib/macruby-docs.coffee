@@ -101,7 +101,12 @@ if !window.in_tests
     $.noConflict()
     check = ->
       try
-        className = jQuery("#pageTitle", window.parent.frames[0].document).html().split(" ")[0]
+        titleParts = jQuery("#pageTitle", window.parent.frames[0].document).html().split(" ")
+        if titleParts[0] == "Deprecated"
+          className = titleParts[1]
+        else
+          className = titleParts[0]
+
         return if jQuery(".declaration .macruby", window.parent.frames[0].document).length > 0
         selector = ".api.instanceMethod .declaration, .api.classMethod .declaration"
         jQuery.each jQuery(selector, window.parent.frames[0].document), (i, element) ->
