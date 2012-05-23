@@ -1,8 +1,12 @@
-[macruby-docs.user.js](https://github.com/joakimk/macruby-docs-js/raw/master/macruby-docs.user.js) - A userscript that adds MacRuby/RubyMotion syntax to Apple's Objective-C/Cocoa docs.
+macruby-docs.user.js - A userscript that adds MacRuby/RubyMotion syntax to Apple's Objective-C/Cocoa docs.
 
-After [installing](https://github.com/joakimk/macruby-docs-js/raw/master/macruby-docs.user.js) and visiting apple docs (like [NSString](https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/Reference/NSString.html)), you should be able to see "MacRuby" sections like this one within the documenation:
+After installing and visiting apple docs (like [NSString](https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Classes/NSString_Class/Reference/NSString.html)), you should be able to see "MacRuby" sections like this one within the documenation:
 
 ![Example](https://github.com/joakimk/macruby-docs-js/raw/master/example.png)
+
+## Installing
+
+Either install the [macruby-docs.user.js](https://github.com/joakimk/macruby-docs-js/raw/master/macruby-docs.user.js) userscript or the [Safari Extension](https://github.com/downloads/joakimk/macruby-docs-js/macruby.safariextz).
 
 ## Development instructions
 
@@ -19,6 +23,9 @@ Open run_specs.html to run the specs.
 Install the extension using tools/macruby-docs-dev.user.js to use the local development version.
 
 ## Credits and license
+
+Contributors:
+- Safari support (Safari Extension) was added by [seanlilmateus](https://github.com/seanlilmateus).
 
 By [Joakim Kolsjö](https://github.com/joakimk) under the MIT license:
 
