@@ -25,7 +25,7 @@ Install the extension using tools/macruby-docs-dev.user.js to use the local deve
 ## Credits and license
 
 Contributors:
-- Safari support (Safari Extension) was added by [seanlilmateus](https://github.com/seanlilmateus).
+- [seanlilmateus](https://github.com/seanlilmateus) added Safari support (Safari Extension).
 
 By [Joakim Kolsjö](https://github.com/joakimk) under the MIT license:
 
